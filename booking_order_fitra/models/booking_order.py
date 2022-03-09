@@ -1,8 +1,7 @@
 from odoo import api, fields, models
 from datetime import *
 
-class SaleOrder(models.Model):
-    # _name = 'booking.order'
+class BookingOrder(models.Model):
     _inherit = 'sale.order'
         
     is_booking_order = fields.Boolean(string='Is Booking Order', readonly=True)
@@ -18,8 +17,8 @@ class SaleOrder(models.Model):
             record.team_leader_id = record.team_u_id.team_leader_id
             record.team_member_ids = record.team_u_id.team_member_ids
     
-    booking_start = fields.Datetime(string='Booking Start', default=datetime.today())
-    booking_end = fields.Datetime(string='Booking End', default=datetime.today() + timedelta(days=1))
+    booking_start = fields.Datetime(string='Booking Start', default=datetime.now())
+    booking_end = fields.Datetime(string='Booking End', default=datetime.now() + timedelta(days=1))
     
     @api.onchange('booking_start')
     def onchange_booking_start(self):
