@@ -30,7 +30,7 @@
                 <sheet>
                     <group>
                         <!-- Add your fields here -->
-                        <field name="sale_order_id" />
+                        <field name="sale_order_id" domain="[('is_booking_order', '=', True)]"/>
                     </group>
                     <group string="Service Team">
                         <field name="team_id" />

@@ -7,7 +7,8 @@ class WorkOrder(models.Model):
 
     name = fields.Char(string='WO Number', readonly=True, default='New', required=True)
     sale_order_id = fields.Many2one(comodel_name='sale.order', string='Booking Order Ref')
-    
+    is_booking_order = fields.Many2one(comodel_name='sale.order.is_booking_order', string='Booking Order Ref')
+        
     team_id = fields.Many2one(comodel_name='service.team', string='Service Team', required=True)
     team_leader_id = fields.Many2one(comodel_name='res.users', string='Service Team Leader', required=True)
     team_member_ids = fields.Many2many(comodel_name='res.users', string='Service Members', required=True)
