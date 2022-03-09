@@ -1,7 +1,7 @@
 from odoo import api, fields, models
 from datetime import *
 
-class SaleWorkOrder(models.Model):
+class WorkOrder(models.Model):
     _name = 'sale.work.order'
     _description = 'Sale Work Order'
 
@@ -18,14 +18,14 @@ class SaleWorkOrder(models.Model):
             record.team_leader_id = record.team_id.team_leader_id
             record.team_member_ids = record.team_id.team_member_ids
     
-    planned_start = fields.Datetime(string='Planned Start', default=datetime.today(), required=True)
+    planned_start = fields.Datetime(string='Planned Start', default=datetime.now(), required=True)
 
     @api.onchange('planned_start')
     def onchange_planned_start(self):
         for record in self:
             record.planned_end = record.planned_start + timedelta(days=1)
             
-    planned_end = fields.Datetime(string='Planned End', default=datetime.today() + timedelta(days=1), required=True)
+    planned_end = fields.Datetime(string='Planned End', default=datetime.now() + timedelta(days=1), required=True)
     
     @api.onchange('planned_end')
     def onchange_planned_end(self):
