@@ -24,7 +24,7 @@
                     <field name="name" placeholder="Team Name" style="font-size:20pt;"/>
                     <group>
                         <field name="team_leader_id" />
-                        <field name="team_member_ids" />
+                        <field name="team_member_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>

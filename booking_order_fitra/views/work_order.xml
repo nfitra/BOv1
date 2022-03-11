@@ -28,23 +28,29 @@
         <field name="arch" type="xml">
             <form string="Test">
                 <sheet>
+                     <h1>
+                         <field name="name"/>
+                     </h1>
                     <group>
-                        <!-- Add your fields here -->
-                        <field name="sale_order_id" domain="[('is_booking_order', '=', True)]"/>
+                        <field name="sale_order_id" domain="[('is_booking_order', '=', True)]" />
                     </group>
-                    <group string="Service Team">
-                        <field name="team_id" />
-                        <field name="team_leader_id" />
-                        <field name="team_member_ids" />
-                    </group>
-                    <group string="Date and Time">
-                        <field name="planned_start" />
-                        <field name="planned_end" />
-                        <field name="date_start" />
-                        <field name="date_end" />
-                    </group>
+
                     <group>
-                        <field name="notes"/>
+                        <group string="Service Team">
+                            <field name="team_id" />
+                            <field name="team_leader_id" />
+                            <field name="team_member_ids" widget="many2many_tags" />
+                        </group>
+                        <group string="Date and Time">
+                            <field name="planned_start" />
+                            <field name="planned_end" />
+                            <field name="date_start" />
+                            <field name="date_end" />
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="notes" />
                     </group>
                 </sheet>
             </form>

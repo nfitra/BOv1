@@ -14,15 +14,18 @@
             <!-- Add your fields here -->
             <notebook position="inside">
                 <page string="Booking Order" attrs="{'invisible': [('is_booking_order','=', False)]}">
-                    <group string="Service Team">
-                        <field name="service_team_id" attrs="{'required': [('is_booking_order','=', True)]}" />
-                        <field name="team_leader_id" attrs="{'required': [('is_booking_order','=', True)]}" />
-                        <field string="Service Team Members" name="team_member_ids" attrs="{'required': [('is_booking_order','=', True)]}" />
+                    <group>
+                        <group string="Service Team">
+                            <field name="service_team_id" attrs="{'required': [('is_booking_order','=', True)]}" />
+                            <field name="team_leader_id" attrs="{'required': [('is_booking_order','=', True)]}" />
+                            <field string="Service Team Members" name="team_member_ids" attrs="{'required': [('is_booking_order','=', True)]}" widget="many2many_tags"/>
+                        </group>
+                        <group string="Date and Time">
+                            <field name="booking_start" attrs="{'required': [('is_booking_order','=', True)]}" />
+                            <field name="booking_end" attrs="{'required': [('is_booking_order','=', True)]}" />
+                        </group>
                     </group>
-                    <group string="Date and Time">
-                        <field name="booking_start" attrs="{'required': [('is_booking_order','=', True)]}" />
-                        <field name="booking_end" attrs="{'required': [('is_booking_order','=', True)]}" />
-                    </group>
+                    
                 </page>
             </notebook>
         </field>
